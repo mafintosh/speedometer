@@ -2,7 +2,7 @@
   "name": "speedometer",
   "version": "0.1.0",
   "repository": "git://github.com/mafintosh/speedometer",
-  "description": "meassure speed the simple way",
+  "description": "simple speed measurement in javascript",
   "keywords": [
     "speed",
     "bytes",
