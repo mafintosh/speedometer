@@ -1,5 +1,5 @@
 module.exports = function(seconds) {
-	seconds = seconds || 5;
+	seconds = seconds || 10;
 	var transfers = [{time:Date.now(), transferred:0},{time:Date.now(), transferred:0}];
 	var tail = transfers[1];
 	var head = transfers[0];

@@ -21,11 +21,11 @@ setInterval(function() {
 }, 1000);
 ```
 
-Per default `speedometer` uses a 5 second buffer.
+Per default `speedometer` uses a 10 second buffer.
 To change this simply pass another value to the constructor
 
 ``` js
-var speed = speedometer(10); // uses a 10s buffer instead
+var speed = speedometer(20); // uses a 20s buffer instead
 ```
 
 ## License
