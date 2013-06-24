@@ -1,6 +1,6 @@
 # speedometer
 
-Simple speed measurement in Javascript
+Speed measurement in Javascript
 
 	npm install speedometer
 
