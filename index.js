@@ -1,21 +1,35 @@
+var tick = 1;
+var maxTick = 65535;
+var resolution = 4;
+var inc = function() {
+	tick = (tick + 1) & maxTick;
+};
+
+var timer = setInterval(inc, (1000 / resolution) | 0);
+if (timer.unref) timer.unref();
+
 module.exports = function(seconds) {
-	seconds = seconds || 10;
-	var transfers = [{time:Date.now(), transferred:0},{time:Date.now(), transferred:0}];
-	var tail = transfers[1];
-	var head = transfers[0];
+	var size = resolution * (seconds || 5);
+	var buffer = [0];
+	var pointer = 1;
+	var last = (tick-1) & maxTick;
 
 	return function(delta) {
-		delta = delta || 0;
-		head.time = Date.now();
-		head.transferred += delta;
+		var dist = (tick - last) & maxTick;
+		if (dist > size) dist = size;
+		last = tick;
 
-		if (head.time - tail.time > transfers.length * 1000) {
-			transfers.unshift({time:head.time, transferred:head.transferred});
-			if (transfers.length > seconds) transfers.pop();
-			head = transfers[0];
-			tail = transfers[transfers.length-1];
+		while (dist--) {
+			if (pointer === size) pointer = 0;
+			buffer[pointer] = buffer[pointer === 0 ? size-1 : pointer-1];
+			pointer++;
 		}
 
-		return 1000 * (head.transferred - tail.transferred) / Math.max(1, head.time - tail.time);
+		if (delta) buffer[pointer-1] += delta;
+
+		var top = buffer[pointer-1];
+		var btm = buffer.length < size ? 0 : buffer[pointer === size ? 0 : pointer];
+
+		return buffer.length < resolution ? top : (top - btm) * resolution / buffer.length;
 	};
 };
