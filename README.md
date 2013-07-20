@@ -11,7 +11,7 @@ var speedometer = require('speedometer');
 var fs = require('fs');
 var speed = speedometer();
 
-// Let'e measure how fast we can read from /dev/urandom
+// Let's measure how fast we can read from /dev/urandom
 var stream = fs.createReadStream('/dev/urandom');
 
 stream.on('data', function(data) {
