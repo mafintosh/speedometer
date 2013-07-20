@@ -9,16 +9,16 @@ Speed measurement in Javascript
 ``` js
 var speedometer = require('speedometer');
 var fs = require('fs');
-var speed = speedometer();
 
 // Let's measure how fast we can read from /dev/urandom
+var speed = speedometer();
 var stream = fs.createReadStream('/dev/urandom');
 
 stream.on('data', function(data) {
+	// Simply call speed with the amount of bytes transferred
 	var bytesPerSecond = speed(data.length);
 
-	process.stdout.write(bytesPerSecond+' bytes/second\n');
-	process.stdout.moveCursor(0, -1); // move the cursor up
+	console.log(bytesPerSecond+' bytes/second');
 });
 ```
 
