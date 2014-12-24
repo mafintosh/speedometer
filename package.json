@@ -1,6 +1,6 @@
 {
   "name": "speedometer",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "repository": "git://github.com/mafintosh/speedometer",
   "description": "simple speed measurement in javascript",
   "keywords": [
