@@ -1,14 +1,18 @@
 var tick = 1
 var maxTick = 65535
 var resolution = 4
+var timer
 var inc = function () {
   tick = (tick + 1) & maxTick
 }
 
-var timer = setInterval(inc, (1000 / resolution) | 0)
-if (timer.unref) timer.unref()
 
 module.exports = function (seconds) {
+  if (!timer) {
+    timer = setInterval(inc, (1000 / resolution) | 0)
+    if (timer.unref) timer.unref()
+  }
+
   var size = resolution * (seconds || 5)
   var buffer = [0]
   var pointer = 1
