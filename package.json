@@ -14,7 +14,7 @@
   "author": "Mathias Buus Madsen <mathiasbuus@gmail.com>",
   "devDependencies": {
     "prettier": "^3.6.2",
-    "prettier-config-holepunch": "^1.0.0"
+    "prettier-config-holepunch": "^2.0.0"
   },
   "scripts": {
     "format": "prettier --write ."
