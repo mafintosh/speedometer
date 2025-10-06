@@ -6,7 +6,6 @@ var inc = function () {
   tick = (tick + 1) & maxTick
 }
 
-
 module.exports = function (seconds) {
   if (!timer) {
     timer = setInterval(inc, (1000 / resolution) | 0)
@@ -34,6 +33,6 @@ module.exports = function (seconds) {
     var top = buffer[pointer - 1]
     var btm = buffer.length < size ? 0 : buffer[pointer === size ? 0 : pointer]
 
-    return buffer.length < resolution ? top : (top - btm) * resolution / buffer.length
+    return buffer.length < resolution ? top : ((top - btm) * resolution) / buffer.length
   }
 }
