@@ -13,10 +13,12 @@
   ],
   "author": "Mathias Buus Madsen <mathiasbuus@gmail.com>",
   "devDependencies": {
+    "lunte": "^1.0.0",
     "prettier": "^3.6.2",
     "prettier-config-holepunch": "^2.0.0"
   },
   "scripts": {
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "lint": "prettier --check . && lunte"
   }
 }
